@@ -1,0 +1,74 @@
+<Schema name="New Schema2">
+  <Cube name="tickets" visible="true" cache="true" enabled="true">
+    <Table name="tickets" alias="">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idEmpleado" name="Empleados">
+      <Hierarchy name="empleado" visible="true" hasAll="true" primaryKey="d_idEmpleado">
+        <Table name="dim_empleados" alias="">
+        </Table>
+        <Level name="Nombre" visible="true" column="nombre" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="categoria" visible="true" column="categoria" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idCentro" name="Centros">
+      <Hierarchy name="Centro" visible="true" hasAll="true" primaryKey="d_idCentro">
+        <Table name="dim_centros" alias="">
+        </Table>
+        <Level name="codPostal" visible="true" column="codPostal" type="Integer" uniqueMembers="false">
+        </Level>
+        <Level name="descrip" visible="true" column="descrip" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="descripZona" visible="true" column="descripZona" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="direccion" visible="true" column="direccion" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="mCuadrados" visible="true" column="mCuadrados" type="Integer" uniqueMembers="false">
+        </Level>
+        <Level name="poblacion" visible="true" column="poblacion" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="provincia" visible="true" column="provincia" type="String" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fecha" name="Tiempos">
+      <Hierarchy name="Tiempo" visible="true" hasAll="true" primaryKey="d_fecha">
+        <Table name="dim_tiempo" alias="">
+        </Table>
+        <Level name="diaMes" visible="true" column="diaMes" type="Integer" uniqueMembers="false">
+        </Level>
+        <Level name="diaSemana" visible="true" column="diaSemana" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="finSemana" visible="true" column="finSemana" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="mes" visible="true" column="mes" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="trimestre" visible="true" column="trimestre" type="String" uniqueMembers="false">
+        </Level>
+        <Level name="vacaciones" visible="true" column="vacaciones" type="String" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idPago" name="Pagos">
+      <Hierarchy name="Pago" visible="true" hasAll="true" primaryKey="d_idPago">
+        <Table name="dim_pagos">
+        </Table>
+        <Level name="cantidad" visible="true" column="cantidad" type="Integer" uniqueMembers="false">
+        </Level>
+        <Level name="descripcion" visible="true" column="descrip" type="String" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="hora" name="Horas">
+      <Hierarchy name="hora" visible="true" hasAll="true" primaryKey="d_hora">
+        <Table name="dim_horas" alias="">
+        </Table>
+        <Level name="franjahoraria" visible="true" column="franjaHoraria" type="String" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="totalTickets" column="totalTicket" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
